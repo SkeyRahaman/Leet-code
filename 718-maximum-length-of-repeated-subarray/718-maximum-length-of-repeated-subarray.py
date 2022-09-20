@@ -7,7 +7,7 @@ class Solution:
             for j in range(1,n1+1):
                 if nums1[j-1] == nums2[i-1]:
                     mem[i][j] = 1 + mem[i-1][j-1] 
-                output = max(output,mem[i][j])
+                    output = max(output,mem[i][j])
         return output
         
         
