@@ -42,7 +42,7 @@ class Solution:
                     output.append("R")
             
                 
-        print(mem)
-        print(mem2)
+        # print(mem)
+        # print(mem2)
         return "".join(output)
             
