@@ -6,7 +6,7 @@ class Solution:
         if SUM%N != 0:return -1
         
         
-        avg = SUM//len(machines)
+        avg = SUM//N
         leftsum = [0]
         rightsum = [0]
         s = 0
