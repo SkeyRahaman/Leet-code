@@ -19,7 +19,7 @@ class Solution:
             rightsum.append(s)
         rightsum =rightsum[::-1]
         
-        print(leftsum,rightsum)
+        # print(leftsum,rightsum)
         
         output = 0
         for i in range(len(machines)):
