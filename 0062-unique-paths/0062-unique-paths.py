@@ -1,6 +1,6 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        @lru_cache(None)
+        @lru_cache
         def helper(i,j):
             if i==0 and j == 0:
                 return 1
