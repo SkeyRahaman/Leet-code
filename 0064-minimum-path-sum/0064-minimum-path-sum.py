@@ -10,6 +10,6 @@ class Solution:
             for j in range(1,len(grid[0])):
                 dp[j] = grid[i][j] + min(dp[j],dp[j-1])
                 
-            print(dp)
+            # print(dp)
         return dp[-1]
         
