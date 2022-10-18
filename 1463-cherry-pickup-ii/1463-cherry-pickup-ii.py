@@ -2,8 +2,11 @@ class Solution:
     def cherryPickup(self, grid: List[List[int]]) -> int:
         N = len(grid[0])
         M = len(grid)
-        @cache
+        # @cache
+        dp = [[[-1] * N for _ in range(N)] for _ in range(M)]
         def helper(i,j1,j2):
+            if dp[i][j1][j2] != -1:
+                return dp[i][j1][j2]
             if i == M-1:
                 if j1 == j2 :return grid[i][j2]
                 return grid[i][j1] + grid[i][j2]
@@ -16,6 +19,7 @@ class Solution:
                         else:
                             maxi = max(maxi,grid[i][j1] + helper(i+1,j1+d1,j2+d2))
             
+            dp[i][j1][j2] = maxi
             return maxi
                 
                 
