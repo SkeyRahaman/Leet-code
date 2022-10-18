@@ -4,6 +4,40 @@ class Solution:
         M = len(grid)
         # @cache
         dp = [[[-1] * N for _ in range(N)] for _ in range(M)]
+        for i in range(M-1,-1,-1):
+            for j1 in range(N):
+                for j2 in range(N):
+                    if i == M-1:
+                        if j1 == j2:
+                            dp[i][j1][j2] = grid[i][j1]
+                        else:
+                            dp[i][j1][j2] = grid[i][j1] + grid[i][j2]
+                    else:
+                        maxi = float('-inf')
+                        for d1 in [-1,0,1]:
+                            for d2 in [-1,0,1]:
+                                if 0<=(j1+d1)<N and 0<=(j2+d2)<N :
+                                    if j1 != j2:
+                                        maxi = max(maxi,grid[i][j1] + grid[i][j2] + dp[i+1][j1+d1][j2+d2])
+                                    else:
+                                        maxi = max(maxi,grid[i][j1] + dp[i+1][j1+d1][j2+d2])
+                        dp[i][j1][j2] = maxi
+        return dp[0][0][N-1]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        N = len(grid[0])
+        M = len(grid)
+        # @cache
+        dp = [[[-1] * N for _ in range(N)] for _ in range(M)]
         def helper(i,j1,j2):
             if dp[i][j1][j2] != -1:
                 return dp[i][j1][j2]
