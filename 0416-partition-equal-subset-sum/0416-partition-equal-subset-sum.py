@@ -7,6 +7,20 @@ class Solution:
         
         
         
+        last = [False] * (K+1)
+        cur = [False] * (K+1)
+        last[0] = True
+        if nums[0]<=K:last[nums[0]] = True
+        for i in range(1,len(nums)):
+            for j in range(1,K+1):
+                NT = last[j]
+                TK = False if nums[i] >j else last[j-nums[i]]
+                cur[j] = NT or TK
+            last = [i for i in cur]
+        return last[K]
+        
+        
+        
         
         mem = [[False] * (K+1) for _ in range(len(nums))]
         for i in range(len(nums)):
