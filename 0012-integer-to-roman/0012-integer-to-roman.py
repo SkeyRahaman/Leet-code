@@ -7,10 +7,9 @@ class Solution:
             if stack[-1] > num:
                 stack.pop()
             else:
-                x = stack[-1]
-                num -= x
-                output.append(dct[x])
-                print(output)
+                num -= stack[-1]
+                output.append(dct[stack[-1]])
+                # print(output)
         return "".join(output)
             
             
