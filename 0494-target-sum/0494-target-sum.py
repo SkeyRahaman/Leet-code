@@ -2,6 +2,7 @@ class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         S = sum(nums)
         dp = [[-1] * (2*S+5) for i in nums]
+        @cache
         def helper(i,m):
             if i == 0:
                 output = 0
