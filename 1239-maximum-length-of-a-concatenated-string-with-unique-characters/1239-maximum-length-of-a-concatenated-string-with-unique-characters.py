@@ -1,5 +1,15 @@
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
+        # @cache
+        dp = [set()]
+        for a in arr:
+            if len(set(a)) < len(a): continue
+            a = set(a)
+            for c in dp[:]:
+                if a & c: continue
+                dp.append(a | c)
+        return max(len(a) for a in dp)
+    
         def helper(i,have):
             if i == 0:
                 notTake = len(have)
