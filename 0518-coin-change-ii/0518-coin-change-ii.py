@@ -1,17 +1,19 @@
 class Solution:
     def change(self, t: int, nums: List[int]) -> int:
-        dp = [[0] * (t+1) for _ in nums]
+        last = [0] * (t+1)
+        cur = [0] * (t+1)
         for i in range(t+1):
             if i%nums[0] == 0:
-                dp[0][i] = 1
+                last[i] = 1
         for i in range(1,len(nums)):
             for j in range(t+1):
-                notTake = dp[i-1][j]
+                notTake = last[j]
                 take = 0
                 if nums[i] <= j:
-                    take = dp[i][j-nums[i]]
-                dp[i][j] =  take + notTake
-        return dp[len(nums)-1][t]
+                    take = cur[j-nums[i]]
+                cur[j] =  take + notTake
+            last = [z for z in cur]
+        return last[t]
 
         
         
