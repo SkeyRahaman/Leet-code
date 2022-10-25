@@ -17,9 +17,14 @@ class Solution:
                 j += 1
             else:
                 if dp[i+1][j] > dp[i][j+1]:
+                    output.append(s1[i])
                     i += 1
                 else:
+                    output.append(s2[j])
                     j+=1
+        output.append(s1[i:])
+        output.append(s2[j:])
+        return "".join(output)
         # print(output)
         j,k=0,0
         o=[]
