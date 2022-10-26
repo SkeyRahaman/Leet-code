@@ -14,7 +14,7 @@ class Solution:
                     else:cur[j] = last[j]
                 else:
                     cur[j] =  False
-            last = [z for z in cur]
+            last = cur[::]
         return last[len(p)]
         
         
