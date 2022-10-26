@@ -1,6 +1,6 @@
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        @cache
+        @lru_cache(None)
         def helper(i,j):
             #base case
             if i == -1 and j==-1:
