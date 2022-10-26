@@ -1,5 +1,20 @@
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
+        last = [0] * (len(t)+1)
+        cur = [0] * (len(t)+1)
+        last[0] = 1
+        cur[0] = 1
+        for i in range(1,len(s)+1):
+            for j in range(1,len(t)+1):
+                if s[i-1] == t[j-1]:
+                    cur[j] = last[j-1] + last[j]
+                else:
+                    cur[j] = last[j]
+            last = [z for z in cur]
+        return last[len(t)]
+        
+        
+        
         dp= [[0] * (len(t)+1) for _ in range(len(s)+1)]
         for i in range(len(s)+1):
             dp[i][0] = 1
