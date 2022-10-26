@@ -11,11 +11,8 @@ class Solution:
         s = 0
         for j,i in enumerate(nums):
             s = (s+i)%k
-            if s in mem:
-                if j-mem[s] > 1:
+            if j-mem.setdefault(s, j) > 1:
                     return True
-            else:
-                mem[s] = j
         return False
                 
             
