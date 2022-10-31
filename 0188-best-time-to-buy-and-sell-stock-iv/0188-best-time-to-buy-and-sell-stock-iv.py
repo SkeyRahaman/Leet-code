@@ -1,6 +1,27 @@
 class Solution:
     def maxProfit(self, k: int, v: List[int]) -> int:
         n = len(v)
+        dp = [[[0,0] for _ in range(k+1)] for i in range(n+ 1)]
+        
+        for i in range(n-1,-1,-1):
+            for j in range(1,k+1):
+                dp[i][j][0] = max( v[i] +dp[i+1][j-1][1],  dp[i+1][j][0] )
+                dp[i][j][1] = max(-v[i] +dp[i+1][j][0],    dp[i+1][j][1] )
+        # print(dp)
+        return dp[0][k][1]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        n = len(v)
         dp = [[[-1,-1] for _ in range(k+2)] for i in range(n)]
         # @cache
         def f(i,k,b):
