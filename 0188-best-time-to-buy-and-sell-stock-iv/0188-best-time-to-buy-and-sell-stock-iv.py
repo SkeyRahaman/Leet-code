@@ -2,13 +2,15 @@ class Solution:
     def maxProfit(self, k: int, v: List[int]) -> int:
         n = len(v)
         dp = [[[0,0] for _ in range(k+1)] for i in range(n+ 1)]
-        
+        last = [[0,0] for _ in range(k+1)]
+        cur = [[0,0] for _ in range(k+1)]
         for i in range(n-1,-1,-1):
             for j in range(1,k+1):
-                dp[i][j][0] = max( v[i] +dp[i+1][j-1][1],  dp[i+1][j][0] )
-                dp[i][j][1] = max(-v[i] +dp[i+1][j][0],    dp[i+1][j][1] )
+                cur[j][0] = max( v[i] +last[j-1][1],  last[j][0] )
+                cur[j][1] = max(-v[i] +last[j][0],    last[j][1] )
+            last = copy.deepcopy(cur)
         # print(dp)
-        return dp[0][k][1]
+        return last[k][1]
         
         
         
