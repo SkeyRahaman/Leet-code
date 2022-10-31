@@ -8,7 +8,7 @@ class Solution:
             for j in range(1,k+1):
                 cur[j][0] = max( v[i] +last[j-1][1],  last[j][0] )
                 cur[j][1] = max(-v[i] +last[j][0],    last[j][1] )
-            last = [[y for y in x] for x in cur]
+            last = [x[::] for x in cur]
         # print(dp)
         return last[k][1]
         
