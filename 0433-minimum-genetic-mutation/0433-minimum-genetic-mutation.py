@@ -13,6 +13,8 @@ class Solution:
             output += 1
             for gen in q2:
                 for i in range(8):
+                    # if gen[i] == end[i]:
+                    #     continue
                     for j in range(4):
                         x = [z for z in gen]
                         if x[i] != gens[j]:
