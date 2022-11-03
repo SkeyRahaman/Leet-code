@@ -3,9 +3,9 @@ class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         mem = SortedList()
         for i in nums:
-            add = mem.bisect_right(i)
-            if add > 0 and mem[add-1] == i:
-                add -= 1
+            add = mem.bisect_left(i)
+            # if add > 0 and mem[add-1] == i:
+            #     add -= 1
             if add != len(mem):
                 mem.discard(mem[add])
             mem.add(i)
