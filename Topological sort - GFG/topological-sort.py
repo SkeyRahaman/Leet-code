@@ -1,7 +1,58 @@
+from collections import defaultdict,deque
 class Solution:
     
     #Function to return list containing vertices in Topological order.
     def topoSort(self, V, adj):
+        indeg = defaultdict(int)
+        for i in range(V):
+            for n in adj[i]:
+                indeg[n] += 1
+        # print(indeg)
+        
+        q = deque()
+        for i in range(V):
+            if indeg[i] == 0:
+                q.append(i)
+        output = []
+        while q:
+            node = q.popleft()
+            output.append(node)
+            for i in adj[node]:
+                indeg[i] -= 1
+                if indeg[i] == 0:
+                    q.append(i)
+        return output
+                
+                
+                
+                
+                
+                
+                
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         # Code here
         visited = set()
         output = []
