@@ -20,7 +20,7 @@ class Solution:
             for j in adj[i]:
                 ind[j] += 1
         # print(ind)
-        for i in adj:
+        for i in al[:k]:
             if ind[i] == 0:
                 queue.append(i)
                 
@@ -32,14 +32,6 @@ class Solution:
                 ind[i] -= 1
                 if ind[i] == 0:
                     queue.append(i)
-        # print(output)
-        if len(output) != K:
-            for letter in al[:k]:
-                if letter not in outputset:
-                    output.append(letter)
-                    outputset.add(letter)
-                    if len(output) == K:
-                        break
         return "".join(output)
     # code here
 
