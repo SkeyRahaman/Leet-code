@@ -3,6 +3,7 @@ from collections import defaultdict,deque
 class Solution:
     def findOrder(self,w, N, K):
         # print(w,type(w))
+        al = "abcdefghijklmnopqrstuvwxyz"
         adj = defaultdict(set)
         ind = defaultdict(int)
         queue = deque()
@@ -33,15 +34,12 @@ class Solution:
                     queue.append(i)
         # print(output)
         if len(output) != K:
-            for word in w:
-                for letter in word:
-                    if letter not in outputset:
-                        output.append(letter)
-                        outputset.add(letter)
-                        if len(output) == K:
-                            break
-                if len(output) == K:
-                    break
+            for letter in al[:k]:
+                if letter not in outputset:
+                    output.append(letter)
+                    outputset.add(letter)
+                    if len(output) == K:
+                        break
         return "".join(output)
     # code here
 
