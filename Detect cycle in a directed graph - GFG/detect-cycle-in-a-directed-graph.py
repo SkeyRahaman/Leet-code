@@ -1,8 +1,34 @@
 #User function Template for python3
+from collections import defaultdict,deque
 class Solution:
     
     #Function to detect cycle in a directed graph.
     def isCyclic(self, V, adj):
+        ind = defaultdict(int)
+        for start in range(V):
+            for end in adj[start]:
+                ind[end] += 1
+        queue = deque()
+        for end in range(V):
+            if ind[end] == 0:
+                queue.append(end)
+        output = []
+        while queue:
+            node = queue.popleft()
+            output.append(node)
+            for i in adj[node]:
+                ind[i] -= 1
+                if ind[i] == 0:
+                    queue.append(i)
+        # print(output,V)
+        return len(output) != V
+            
+        
+        
+        
+        
+        
+    
         # code here
         # print(V,adj)
         visited = set()
