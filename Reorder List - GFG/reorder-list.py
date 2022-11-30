@@ -19,6 +19,60 @@ class Linked_List:
 class Solution:
     
     def reorderList(self,head):
+        """
+        1. find the middle.
+        2. reverse the second half
+        3. merge both
+        """
+        if not head.next:
+            return head
+        # 1. find the middle.
+        slow = head
+        fast = head
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        head2 = slow.next
+        slow.next = None
+
+        # 2. reverse the second list
+        pre = head2
+        nxt = pre.next
+        pre.next = None
+        while nxt:
+            post = nxt.next
+            nxt.next = pre
+            pre = nxt
+            nxt = post
+        head2 = pre
+
+        #3. Merge both the list
+        output = node(0)
+        ptr = output
+        while head and head2:
+            ptr.next = head
+            head = head.next
+            ptr = ptr.next
+
+            ptr.next = head2
+            head2 = head2.next
+            ptr = ptr.next
+            ptr.next = None
+            
+        if head:
+            ptr.next = head
+            ptr = ptr.next
+            ptr.next = None
+            
+        return output.next
+        
+        
+        
+        
+        
+        
+        
+        
         mem = deque()
         ptr = head
         while ptr:
