@@ -15,10 +15,11 @@ def numOfWays(M, N):
         return out
     
     count = (N*M)**2 - (N*M)
+    prb = 0
     for i in range(N):
         for j in range(M):
-            count -= get(i,j)
-    return count%((10**9)+7) 
+            prb += get(i,j)
+    return (count-prb)%((10**9)+7) 
         
 
 #{ 
