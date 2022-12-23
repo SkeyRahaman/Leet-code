@@ -4,6 +4,24 @@ from typing import List
 
 class Solution:
     def maxCoins(self, N : int, arr : List[int]) -> int:
+        dp = [[0] * (N+1) for _ in range(N+1)]
+        for start in range(N-1,-1,-1):
+            for end in range(start,N):
+                output = 0
+                left = 1 if start<=0 else arr[start-1]
+                right = 1 if end>=N-1 else arr[end+1]
+                for i in range(start,end+1):
+                    cost = left*right*arr[i]
+                    output = max(output, cost + dp[start][i-1] + dp[i+1][end])
+                dp[start][end] =  output
+        return dp[0][N-1]
+                    
+                
+        
+        
+        
+        
+        
         # code here
         dp = [[-1] * N for _ in range(N)]
         def f(start,end):
