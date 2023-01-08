@@ -1,5 +1,4 @@
 #User function Template for python3
-from sortedcontainers import SortedList
 from collections import deque
 
 '''
@@ -11,83 +10,38 @@ class Node:
         self.bottom=None
         
 '''
-class Solution():
-    
-    def flatten(self,root):
-        def mergell(ptr1,ptr2):
-            output = Node(-1)
-            ptr = output
-            while ptr1 and ptr2:
-                if ptr1.data <= ptr2.data:
-                    node = ptr1
-                    ptr1 = ptr1.bottom
-                else:
-                    node = ptr2
-                    ptr2 = ptr2.bottom
-                node.bottom = None
-                ptr.bottom = node
-                ptr = ptr.bottom
-            if ptr1:
-                ptr.bottom = ptr1
-            if ptr2 :
-                ptr.bottom = ptr2
-            return output.bottom
-            
-        q = deque()
-        ptr = root
-        while ptr :
-            q.append(ptr)
-            ptr = ptr.next
-        while len(q) != 1:
-            l1 = q.popleft()
-            l2 = q.popleft()
-            q.appendleft(mergell(l1,l2))
-        return q.popleft()
-        
-        
-        
-        heap = SortedList()
+
+def flatten(root):
+    #Your code here
+    def mergell(ptr1,ptr2):
         output = Node(-1)
         ptr = output
-        ptr1 = root
-        while ptr1:
-            heap.add([ptr1.data,ptr1])
-            ptr1 = ptr1.next
-        while len(heap) != 0:
-            val , node = heap.pop(0)
-            if node.bottom:
-                heap.add([node.bottom.data,node.bottom])
-            node.next = None
+        while ptr1 and ptr2:
+            if ptr1.data <= ptr2.data:
+                node = ptr1
+                ptr1 = ptr1.bottom
+            else:
+                node = ptr2
+                ptr2 = ptr2.bottom
             node.bottom = None
             ptr.bottom = node
             ptr = ptr.bottom
+        if ptr1:
+            ptr.bottom = ptr1
+        if ptr2 :
+            ptr.bottom = ptr2
         return output.bottom
         
-        
-        
-        
-        #Your code here
-        head = Node(-1)
-        ptr = head
-        heap = []
-        c = 0
-        heapq.heappush(heap,(root.data,c,root))
-        while len(heap) !=0:
-            val,_,node = heapq.heappop(heap)
-            # print(val)
-            if node.next:
-                heapq.heappush(heap,(node.next.data,c,node.next))
-                c+=1
-            if node.bottom:
-                heapq.heappush(heap,(node.bottom.data,c,node.bottom))
-                c+=1
-            ptr.bottom = node
-            ptr = ptr.bottom
-            ptr.next = None
-            ptr.bottom = None
-        return head.bottom
-                
-            
+    q = deque()
+    ptr = root
+    while ptr :
+        q.append(ptr)
+        ptr = ptr.next
+    while len(q) != 1:
+        l1 = q.popleft()
+        l2 = q.popleft()
+        q.appendleft(mergell(l1,l2))
+    return q.popleft()
 
 
 #{ 
@@ -133,7 +87,7 @@ if __name__=="__main__":
             a1=listo[it]
             it+=1
             temp=Node(a1)
-            if flag is 1:
+            if flag == 1:
                 head=temp
                 pre=temp
                 flag=0
@@ -147,15 +101,14 @@ if __name__=="__main__":
                 a=listo[it]
                 it+=1
                 tempB=Node(a)
-                if flag1 is 1:
+                if flag1 == 1:
                     temp.bottom=tempB
                     preB=tempB
                     flag1=0
                 else:
                     preB.bottom=tempB
                     preB=tempB
-        obj=Solution()
-        root=obj.flatten(head)
+        root=flatten(head)
         printList(root)
         
         t-=1
