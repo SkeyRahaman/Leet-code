@@ -2,37 +2,33 @@
 
 class Solution:
     def solve(self,n,k,stalls):
-        
-            
+        def place(i):
+            nonlocal k
+            cow = k
+            last = float('-inf')
+            for s in stalls:
+                if s-last>=i:
+                    last = s
+                    cow -= 1
+            return cow <= 0
+        # for i in range(max(stalls)):
+        #     print(i,place(i))
         stalls.sort()
-        maxi = stalls[-1]
-        mini = stalls[0]
-        def canplace(i):
-            last = stalls[0] - i
-            cows = k
-            for c in stalls:
-                if c-last >= i:
-                    last = c
-                    cows -= 1
-            return cows <= 0
-            
-            
-            
-            
-            
-            
-            
-        low = 1
-        high = maxi-mini
+        left = 1
+        right = stalls[-1]
         output = 1
-        while low<=high:
-            mid = (low + high)//2
-            if canplace(mid):
+        while left<=right:
+            mid = (left+right)>>1
+            if place(mid):
                 output = max(output,mid)
-                low = mid + 1
+                left = mid+1
             else:
-                high = mid -1
+                right = mid - 1
+                
         return output
+        return 0
+        pass
+
 
 #{ 
  # Driver Code Starts
