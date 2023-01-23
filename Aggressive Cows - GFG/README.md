@@ -6,7 +6,7 @@ The second line contains <strong>n</strong> space-separated integers denoting th
 
 <p><strong>Example 1:</strong></p>
 
-<pre style="position: relative;"><strong>Input:</strong>
+<pre><strong>Input:</strong>
 n=5 
 k=3
 stalls = [1 2 4 8 9]
@@ -18,11 +18,11 @@ the second cow can be placed at stalls[2] and
 the third cow can be placed at stalls[3]. 
 The minimum distance between cows, in this case, is 3, 
 which also is the largest among all possible ways.
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><strong>Example 2:</strong></p>
 
-<pre style="position: relative;"><strong>Input:</strong>
+<pre><strong>Input:</strong>
 n=5 
 k=3
 stalls = [10 1 2 7 5]
@@ -33,7 +33,7 @@ The first cow can be placed at stalls[0],
 the second cow can be placed at stalls[1] and
 the third cow can be placed at stalls[4].
 The minimum distance between cows, in this case, is 4,
-which also is the largest among all possible ways.<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+which also is the largest among all possible ways.</pre>
 
 <p><strong>Your Task:</strong><br>
 Complete the function int solve(), which takes integer n, k, and a vector&nbsp;stalls&nbsp;with n&nbsp;integers as input and returns the largest possible minimum distance between cows.</p>
