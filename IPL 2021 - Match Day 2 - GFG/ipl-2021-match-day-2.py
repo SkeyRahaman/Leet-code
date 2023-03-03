@@ -10,33 +10,16 @@ class Solution:
         :return: A list of required values 
         '''
         #code here
-        nums = arr
-        mem = deque()
-        output = []
-        l,r = 0,0
-        while r<len(nums):
-            while mem and nums[mem[-1]] < nums[r]:
-                mem.pop()
-            mem.append(r)
-            
-            if l>mem[0]:
-                mem.popleft()
-                
-            if r+1 >= k:
-                output.append(nums[mem[0]])
-                l += 1
-            r+=1
-        return output
         
         output = []
         stack = deque()
         for i,j in enumerate(arr):
             while len(stack) != 0 and arr[stack[-1]] < j:
                 stack.pop()
-            
             stack.append(i)
-            l = max(0,i-k)
-            if stack[-1] < (i-k+1):
+            
+
+            if stack[0] < (i-k+1):
                 stack.popleft()
                 
             if i>=k-1:
